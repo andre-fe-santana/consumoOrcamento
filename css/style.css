@@ -8,13 +8,143 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 2em;
 
     height: 100vh;
+}
+
+nav {
+
+    color: var(--bg);
+
 }
 
 main {
 
     display: flex;
     justify-content: center;
+
+}
+
+.content {
+
+    border-radius: 12px;
+    padding: 2em;
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: row;
+
+    gap: 3em;
+
+}
+
+.form {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* INPUTS */
+
+.input-group {
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-bottom: 1em;
+    max-width: 100%;
+
+}
+
+
+    .input-group label, select{
+
+        display: flex;
+        align-content: center;
+
+        background-color: white;
+        /* padding: 1em; */
+        height: 50px;
+        padding: 0 1em;
+        border-radius: 0.5em;
+        gap: 0.5em;
+
+    }
+
+    .input-group label > input {
+
+        width: 100%;
+
+    } 
+
+    .input-group input, select{
+
+        border: none;
+
+    }
+
+    .input-group input:focus, select:focus{
+
+        outline: none;
+
+    }
+
+.input-row {
+
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 0.5em;
+    max-width: 100%;
+
+}
+
+        .input-row button {
+    
+            background-image: linear-gradient(to right, var(--gradient1), var(--gradient2));
+
+            text-transform: uppercase;
+            font-size: 1em;
+            padding: 0.5em 0;
+
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+    
+        }
+
+        /* .input-row #btnReset img {
+
+            width: 2em;
+
+        } */
+
+.inputIcon{
+
+    width: 1em;
+
+}
+
+#currencySelect{
+
+    padding: 0;
+
+} 
+
+/* FOOTER */
+
+footer a {
+
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+}
+
+footer img {
+
+    width: 1em;
 
 }
