@@ -1,4 +1,5 @@
 @import url(global.css); /* Configurações Globais */
+@import url(chart.css);
 
 body {
 
@@ -131,6 +132,8 @@ main {
     padding: 0;
 
 } 
+
+
 
 /* FOOTER */
 

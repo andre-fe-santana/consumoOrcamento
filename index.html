@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orçamento</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 </head>
 <body>
@@ -71,15 +72,24 @@
 
 
             </div>
-            <!-- <div class="result">
-                <div class="resultGraph">
 
+            <hr class="vertical-line">
+            
+            <div class="result">
+                <div class="resultGraph">
+                    <div id="chart"></div>
                 </div>
                 <div class="resultText">
                     <h2 class="budgetUsage">99%</h2>
-                    <span>do orçamento CAPEX usado</span>
+                    <span>Com essa compra consumiremos [PORCENTAGEM] do projeto [NOME] [TIPO]</span>
                 </div>
-            </div> -->
+                <div class="resultButton">
+                    <button id="btnCopy" type="reset">
+                        <img class="inputIcon" src="img/icons/copy.svg" alt="Copiar texto">
+                        Copiar Texto
+                    </button>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -93,7 +103,7 @@
     </footer>
 
     <script src="js/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="js/chart.js"></script>
 
 </body>
 </html>
