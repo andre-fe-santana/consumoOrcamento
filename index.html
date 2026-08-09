@@ -4,9 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orçamento</title>
-    <link rel="stylesheet" href="css/style.css">k
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
     
+    <nav>
+        <h1>Calculadora de Orçamento</h1>
+    </nav>
+
+    <main>
+        <section class="content">
+            <div class="form">
+                <div class="input-row">
+                    <div class="input-group">
+                        <span>Nome do Projeto</span>
+                        <label for="projectName">
+                            icon
+                            <input type="text" name="" id="projectName" placeholder="Máx: 120 caracteres">
+                        </label>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="budgetType">Tipo</label>
+                        <select name="" id="budgetType">
+                            <option value="CAPEX" selected>CAPEX</option>
+                            <option value="OPEX">OPEX</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <span>Qual é o orçamento do projeto?</span>
+                    <label for="budgetTotal">
+                        R$
+                        <input type="number" name="" id="budgetTotal" placeholder="Ex: 1.000.000" min="0">
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <span>Quanto sobrou do orçamento?</span>
+                    <label for="budgetLeft">
+                        <input type="number" name="" id="" placeholder="Ex: 500.000,00" min="0">
+                    </label>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="budgetType">Tipo</label>
+                        <select name="" id="budgetType">
+                            <option value="CAPEX" selected>CAPEX</option>
+                            <option value="OPEX">OPEX</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <span>Custo da Compra</span>
+                        <label for="purchaseCost">
+                            <select name="" id="budgetType">
+                                <option value="CAPEX" selected>CAPEX</option>
+                                <option value="OPEX">OPEX</option>
+                            </select>
+                            <input type="number" name="" id="purchaseCost" placeholder="Ex: R$">
+                        </label>
+                    </div>
+
+                    <div class="input-row">
+                        <button id="btnSubmit">Calcular</button>
+                        <button id="btnReset" type="reset">Limpar</button>
+                    </div>
+                    
+                </div>
+
+
+            </div>
+            <div class="result">
+                <div class="resultGraph">
+
+                </div>
+                <div class="resultText">
+                    <h2 class="budgetUsage">99%</h2>
+                    <span>do orçamento CAPEX usado</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <a href="https://github.com/andre-fe-santana">
+                <img src="img/" alt="Logo do GitHub">
+                <span>@andre_fe_santana</span>
+            </a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
