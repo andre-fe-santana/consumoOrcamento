@@ -1,0 +1,16 @@
+:root {
+
+    font-family: "Globotipo Corporativa", Helvetica, sans-serif;
+    color: black;
+
+    --gradient1: #05A6FF;
+    --gradient2: #8800F8;
+    --errorMsg: #FF0C1F;
+}
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+}
