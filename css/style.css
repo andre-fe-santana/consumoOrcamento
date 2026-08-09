@@ -93,7 +93,7 @@ main {
 .input-row {
 
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr 0.15fr;
     gap: 0.5em;
     max-width: 100%;
 
@@ -104,8 +104,8 @@ main {
             background-image: linear-gradient(to right, var(--gradient1), var(--gradient2));
 
             text-transform: uppercase;
-            font-size: 1em;
-            padding: 0.5em 0;
+            font-size: 0.8em;
+            padding: 1em 0;
 
             color: white;
             border: none;
@@ -114,11 +114,11 @@ main {
     
         }
 
-        /* .input-row #btnReset img {
+        .input-row #btnReset img {
 
-            width: 2em;
+            width: 1.5em;
 
-        } */
+        }
 
 .inputIcon{
 
