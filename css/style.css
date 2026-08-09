@@ -1,2 +1,18 @@
 @import url(global.css); /* Configurações Globais */
 
+body {
+
+    background-image: linear-gradient(to right, var(--gradient1), var(--gradient2));
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+main {
+
+    display: flex;
+    justify-content: center;
+
+}

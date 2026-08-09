@@ -6,11 +6,28 @@
     --gradient1: #05A6FF;
     --gradient2: #8800F8;
     --errorMsg: #FF0C1F;
+    --text: #313131;
+    --title: black;
+    --subtitle: #1c1c1c;
+
+
 }
 
 * {
 
     margin: 0;
     padding: 0;
+
+}
+
+a {
+
+    text-decoration: none;
+
+}
+
+li {
+
+    list-style-type: none;
 
 }
