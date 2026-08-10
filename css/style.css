@@ -10,7 +10,6 @@ body {
     align-items: center;
     justify-content: center;
     gap: 2em;
-
     height: 100vh;
 }
 
@@ -43,6 +42,7 @@ main {
 
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
 
 }
 
@@ -132,6 +132,33 @@ main {
     padding: 0;
 
 } 
+
+
+/* RESULT */
+
+.result {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+
+}
+
+.resultButton #btnCopy {
+
+    background-image: linear-gradient(to right, var(--gradient1), var(--gradient2));
+    
+    text-transform: uppercase;
+    font-size: 0.8em;
+    padding: 1em 1em;
+
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+
+}
 
 
 

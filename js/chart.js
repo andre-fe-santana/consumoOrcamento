@@ -1,5 +1,5 @@
 var options = {
-    series: [60, 30],
+    series: [60, 10, 30],
     chart: {
         type: 'donut',
         width: 400,
@@ -7,8 +7,9 @@ var options = {
     labels: [
         'Consumido',
         'Valor da Compra',
+        'Restante'
     ],
-    colors: ['#0EA5E9', '#14B8A6', '#F59E0B', '#F43F5E'],
+    colors: ['#0EA5E9', '#F59E0B', '#14B8A6'],
     plotOptions: {
         pie: {
             // Round the corners of every slice (px)
@@ -21,7 +22,7 @@ var options = {
                     show: true,
                     total: {
                         show: true,
-                        label: 'Total Consumido',
+                        label: 'Total',
                     },
                 },
             },
@@ -37,8 +38,8 @@ var options = {
         position: 'bottom',
     },
     title: {
-        text: 'Orders by sales team',
-        align: 'left',
+        text: 'Consumo de Orçamento',
+        align: 'center',
     },
     responsive: [
         {
