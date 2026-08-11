@@ -1,21 +1,28 @@
 @import url(global.css); /* Configurações Globais */
-@import url(chart.css);
+@import url(chart.css); /* Configurações do Gráfico */ 
 
 body {
 
     background-image: linear-gradient(to right, var(--gradient1), var(--gradient2));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2em;
-    height: 100vh;
+    min-height: 100vh; 
+    /* margin: 2em 0; */
+    max-width: 100%;
+
 }
 
 nav {
 
     color: var(--bg);
+    text-align: center;
 
 }
 
@@ -34,7 +41,7 @@ main {
     display: flex;
     flex-direction: row;
 
-    gap: 3em;
+    gap: 2em;
 
 }
 
@@ -143,6 +150,29 @@ main {
     align-items: center;
     gap: 1em;
 
+    width: 300px;
+
+}
+
+.resultGraph {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.resultText {
+
+    font-style: italic;
+    text-align: center;
+    font-size: 0.8em;
+
+}
+
+.resultText span {
+
+    color: var(--text);
+
 }
 
 .resultButton #btnCopy {
@@ -157,6 +187,16 @@ main {
     border: none;
     border-radius: 8px;
     font-weight: bold;
+    
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+}
+
+.resultButton #btnCopy img {
+
+    width: 1.5em;
 
 }
 
@@ -176,5 +216,104 @@ footer a {
 footer img {
 
     width: 1em;
+
+}
+
+/* RESPONSIVIDADE */
+
+/* Tablet */
+
+@media (max-width: 768px) and (min-width: 436px) {
+    
+    body {
+
+        margin: 4em 0;
+
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+}
+
+/* Celular */
+
+@media (max-width: 436px) {
+
+    body {
+    
+        display: flex;
+        justify-content: center;
+        margin: 4em 10%;
+        max-width: 100%;
+    
+    }
+
+    nav {
+
+        font-size: 0.8em;
+
+    }
+
+    .content {
+        
+        flex-direction: column;
+        padding: 2em 1em;
+        width: 80%;
+
+    }
+
+    .input-group {
+
+        font-size: 1em;
+
+    }
+
+                .input-group label,
+                select {
+        
+                    display: flex;
+                    align-content: center;
+        
+                    background-color: white;
+                    /* padding: 1em; */
+                    height: 50px;
+                    padding: 0 1em;
+                    border-radius: 0.5em;
+                    gap: 0.5em;
+        
+                }
+
+    .input-row {
+
+        display: grid;
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        gap: 0;                    
+        
+        
+        
+        ;
+
+    }
+
+    .input-row > .input-group {
+
+        margin-bottom: 0.5em;
+
+    }
+
+    .input-row:last-child{
+
+        gap: 0.5em;
+
+    }
+
+    .result {
+
+        max-width: 100%;
+
+    }
 
 }

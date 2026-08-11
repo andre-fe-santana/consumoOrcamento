@@ -1,3 +1,5 @@
+import { totalUtilizado } from './script.js';
+
 var options = {
     series: [60, 10, 30],
     chart: {
@@ -23,6 +25,9 @@ var options = {
                     total: {
                         show: true,
                         label: 'Total',
+                        formatter: function () {
+                            return totalUtilizado + "%";
+                        },
                     },
                 },
             },
