@@ -244,9 +244,9 @@ footer img {
     body {
     
         display: flex;
-        justify-content: center;
-        margin: 4em 10%;
+        margin: 4em 5%;
         max-width: 100%;
+        align-content: center;
     
     }
 
