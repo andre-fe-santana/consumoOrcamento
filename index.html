@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orçamento</title>
+    <title>Calculadora de Orçamento</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
@@ -16,7 +16,7 @@
 
     <main>
         <section class="content">
-            <div class="form">
+            <form class="form">
                 <div class="input-row">
                     <div class="input-group">
                         <span>Nome do Projeto</span>
@@ -71,7 +71,7 @@
                 </div>
 
 
-            </div>
+            </form>
 
             <hr class="vertical-line">
             
@@ -81,12 +81,12 @@
                 </div>
                 <div class="resultText">
                     <h4>Justificativa:</h4>
-                    <span>"Com essa compra consumiremos [PORCENTAGEM] do projeto [NOME] [TIPO]"</span>
+                    <span id="purchaseMotive">"Com essa compra consumiremos [PORCENTAGEM] do projeto [NOME] [TIPO]"</span>
                 </div>
                 <div class="resultButton">
-                    <button id="btnCopy" type="reset">
+                    <button id="btnCopy">
                         <img class="inputIcon" src="img/icons/copy.svg" alt="Copiar texto">
-                        Copiar Texto
+                        <span class="btnText">Copiar Texto</span>
                     </button>
                 </div>
             </div>
