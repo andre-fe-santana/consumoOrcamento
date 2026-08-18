@@ -12,6 +12,18 @@ let btnCopy = document.querySelector('#btnCopy')
 let copyIcon = btnCopy.querySelector('.inputIcon')
 let btnText = btnCopy.querySelector('.btnText')
 
+function getBudget() {
+
+    try {
+        
+        
+
+    } catch (error) {
+        
+    }
+
+}
+
 function copyText() {
 
     console.log(purchaseMotive.textContent)

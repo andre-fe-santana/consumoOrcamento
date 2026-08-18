@@ -107,8 +107,8 @@ main {
 
 }
 
-        .input-row button {
-    
+        .input-row button, .input-group button {
+
             background-image: linear-gradient(to right, var(--gradient1), var(--gradient2));
 
             text-transform: uppercase;
@@ -119,7 +119,22 @@ main {
             border: none;
             border-radius: 8px;
             font-weight: bold;
-    
+        }
+
+        .input-row button:hover, .input-group button:hover{
+
+            transition: 0.5s ease-in;
+            background-image: linear-gradient(to right, var(--gradient1), var(--gradient2));
+            color: white;
+            
+        }
+
+        .input-group button:disabled, .input-row button:disabled {
+
+            background-image: none;
+            background-color: grey;
+            cursor: not-allowed;
+            opacity: 0.5;      
         }
 
         .input-row #btnReset img {
