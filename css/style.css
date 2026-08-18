@@ -45,7 +45,7 @@ main {
 
 }
 
-.form {
+form {
 
     display: flex;
     flex-direction: column;
@@ -123,7 +123,8 @@ main {
 
         .input-row button:hover, .input-group button:hover{
 
-            transition: 0.5s ease-in;
+            transition: 0.2s linear;
+            transform: scale(1.02);
             background-image: linear-gradient(to right, var(--gradient1), var(--gradient2));
             color: white;
             

@@ -1,3 +1,8 @@
+// checagem de preenchimento de inputs
+const inputs = document.querySelectorAll('input')
+const formulario = document.querySelector('.form')
+const btnSubmit = document.querySelector('#btnSubmit')
+
 // coleta de dados para o formulario
 let projectNameInput = document.querySelector('#projectName');
 let budgetTypeInput = document.querySelector('#budgetType');
@@ -12,24 +17,29 @@ let btnCopy = document.querySelector('#btnCopy')
 let copyIcon = btnCopy.querySelector('.inputIcon')
 let btnText = btnCopy.querySelector('.btnText')
 
-function getBudget() {
+formulario.addEventListener('keydown', function unlockButton() {
+    
+    const camposPreenchidos = Array.from(document.querySelectorAll('input')).every(inputs => inputs.value.trim() !== '')
+    console.log(camposPreenchidos)
+    
+    if (camposPreenchidos === true) {
 
-    try {
-        
-        
+        btnSubmit.removeAttribute('disabled')
 
-    } catch (error) {
-        
+    } else {
+
+        btnSubmit.disabled = true
+
     }
 
-}
+})
 
-function copyText() {
+btnCopy.addEventListener('click', function copyText() {
 
     console.log(purchaseMotive.textContent)
 
     try {
-        
+
         navigator.clipboard.writeText(purchaseMotive.textContent)
 
         copyIcon.src = 'img/icons/check.svg'
@@ -42,9 +52,7 @@ function copyText() {
     }
 
 }
-
-
-btnCopy.addEventListener('click', copyText)
+)
 
 
 // PREENCHENDO GRAFICO
