@@ -99,8 +99,7 @@ export function getBudget(e) {
                 
             let data = [ usedPercentage, purcharsePercentage, leftPercentage ]
             
-            // console.log(data)
-
+            
             purchaseMotive.textContent = `Com essa compra consumiremos ${usedPercentageFinal}% do projeto ${projectName} em ${budgetType}`
 
             graphData(data, usedPercentageFinal) //chama a função para exportar os dados
