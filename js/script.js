@@ -46,8 +46,8 @@ export function getBudget(e) {
 
         let projectName = (projectNameInput.value).trim()
         let budgetType = projectType.value
-        let budgetTotal = Number(parseFloat((budgetTotalInput.value).replace('.', '')).toFixed(2))
-        let budgetLeft = Number(parseFloat((budgetLeftInput.value).replace('.', '')).toFixed(2))
+        let budgetTotal = Number(parseFloat((budgetTotalInput.value).replace('.', ',')).toFixed(2))
+        let budgetLeft = Number(parseFloat((budgetLeftInput.value).replace('.', ',')).toFixed(2))
         let currencySelect = currencySelectInput.value
         let purchaseCost = Number(parseFloat((purchaseCostInput.value).replace('.', '')).toFixed(2))
 
@@ -65,7 +65,7 @@ export function getBudget(e) {
         else if (purchaseCost > budgetLeft) {
 
             errorDialog.style.display = "block";
-            errorContent.textContent = 'Valor da compra maior do que '
+            errorContent.textContent = 'Valor da compra maior do que o valor disponível '
 
         } 
 
@@ -98,21 +98,19 @@ export function getBudget(e) {
             let budgetUsed = budgetTotal - budgetLeft
             let budgetLeftFinal = budgetTotal - (budgetUsed + purchaseCost)
 
+
+            console.log(`Consumido: \n Antes: R$ ${budgetUsed} \n Depois: R$ ${budgetLeftFinal} (- R$${purchaseCost})`)
+
             // porcentagem
-            let usedPercentage = ((budgetUsed / budgetTotal)) * 100 // % ocupada no orçamento
-            let purcharsePercentage = ((purchaseCost/budgetTotal)) * 100 // % ocupada
-            let usedPercentageFinal = ((budgetUsed + purchaseCost) / budgetTotal) * 100
-            let leftPercentage = ((budgetLeftFinal)/100) * 100
+            let usedPercentage = Number((((budgetUsed / budgetTotal)) * 100).toFixed(2)) // % ocupada no orçamento
+            let purcharsePercentage = Number((((purchaseCost/budgetTotal)) * 100).toFixed(2)) // % ocupada
+            let usedPercentageFinal = Number((((budgetUsed + purchaseCost) / budgetTotal) * 100).toFixed(2))
+            let leftPercentage = Number((((budgetLeftFinal) / budgetTotal) * 100).toFixed(2))
+            
 
             console.log(`Consumido: ${usedPercentage}% | Compra: ${purcharsePercentage}% | Restante: ${leftPercentage}%`)
                 
             let data = [ usedPercentage, purcharsePercentage, leftPercentage ]
-
-            if (usedPercentageFinal > 100) { //estourou o orcamento
-
-                
-
-            }
             
             // console.log(data)
 
