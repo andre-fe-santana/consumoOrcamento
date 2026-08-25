@@ -46,13 +46,13 @@ export function getBudget(e) {
 
         let projectName = (projectNameInput.value).trim()
         let budgetType = projectType.value
-        let budgetTotal = Number(parseFloat(budgetTotalInput.value).toFixed(2))
-        let budgetLeft = Number(parseFloat(budgetLeftInput.value).toFixed(2))
+        let budgetTotal = Number(parseFloat((budgetTotalInput.value).replace('.', '')).toFixed(2))
+        let budgetLeft = Number(parseFloat((budgetLeftInput.value).replace('.', '')).toFixed(2))
         let currencySelect = currencySelectInput.value
-        let purchaseCost = Number(parseFloat(purchaseCostInput.value).toFixed(2))
+        let purchaseCost = Number(parseFloat((purchaseCostInput.value).replace('.', '')).toFixed(2))
 
         // teste de valores
-        console.log(`Nome do projeto: ${projectName} ${typeof (projectName)}| Tipo: ${budgetType} ${typeof (budgetType)}| Disponível: ${budgetTotal} ${typeof (budgetTotal)}| Restante: ${budgetLeft} ${typeof (budgetLeft)}| Moeda: ${currencySelect} ${typeof (currencySelect)}| Custo da Compra: ${purchaseCost} ${typeof (purchaseCost)}`)
+        console.log(`Nome do projeto: ${projectName} ${typeof (projectName)} | Tipo: ${budgetType} ${typeof (budgetType)} | Disponível: ${budgetTotal} ${typeof (budgetTotal)} | Restante: ${budgetLeft} ${typeof (budgetLeft)} | Moeda: ${currencySelect} ${typeof (currencySelect)} | Custo da Compra: ${purchaseCost} ${typeof (purchaseCost)}`)
 
         // verificacao de erro
         if (budgetTotal <= 0 || budgetLeft <= 0 || purchaseCost <= 0) {
@@ -60,7 +60,16 @@ export function getBudget(e) {
             errorDialog.style.display = "block";
             errorContent.textContent = 'Não utilize valores negativos nos campos'
 
-        } else {
+        }
+        
+        else if (purchaseCost > budgetLeft) {
+
+            errorDialog.style.display = "block";
+            errorContent.textContent = 'Valor da compra maior do que '
+
+        } 
+
+        else {
 
             errorDialog.style.display = "none";
 
@@ -98,6 +107,12 @@ export function getBudget(e) {
             console.log(`Consumido: ${usedPercentage}% | Compra: ${purcharsePercentage}% | Restante: ${leftPercentage}%`)
                 
             let data = [ usedPercentage, purcharsePercentage, leftPercentage ]
+
+            if (usedPercentageFinal > 100) { //estourou o orcamento
+
+                
+
+            }
             
             // console.log(data)
 

@@ -72,8 +72,21 @@ export function renderGraph(data, usedPercentageFinal) {
 
     }
 
+    let chartElement = document.querySelector("#chart")
+    let chart = new ApexCharts(document.querySelector('#chart'), options)
+    console.log(chartElement)
 
-    var chart = new ApexCharts(document.querySelector('#chart'), options)
-    chart.render()
+    if (chartElement == null) {
+
+        console.log("tava vazio")
+        chart.render()
+
+
+    } else {
+
+        chartElement.innerHTML = ''
+        chart.render() 
+    }
+
 
 }
