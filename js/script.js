@@ -16,6 +16,8 @@ let currencySelectInput = document.querySelector('#currencySelect')
 let purchaseCostInput = document.querySelector('#purchaseCost')
 
 // resposta
+let line = document.querySelector('.vertical-line')
+let result = document.querySelector('.result')
 let purchaseMotive = document.querySelector('#purchaseMotive')
 let btnCopy = document.querySelector('#btnCopy')
 let copyIcon = btnCopy.querySelector('.inputIcon')
@@ -118,6 +120,8 @@ export function getBudget(e) {
 
             graphData(data, usedPercentageFinal) //chama a função para exportar os dados
 
+            result.style.display = "flex"
+            line.style.display = "flex"
         }
 
 

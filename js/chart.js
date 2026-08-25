@@ -50,10 +50,11 @@ export function renderGraph(data, usedPercentageFinal) {
             legend: {
                 position: 'bottom',
             },
-            title: {
-                text: 'Consumo de Orçamento',
-                align: 'center',
-            },
+            // title: {
+            //     enabled: false,
+            //     text: 'Consumo de Orçamento',
+            //     align: 'center',
+            // },
             responsive: [
                 {
                     breakpoint: 480,

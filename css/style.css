@@ -45,11 +45,11 @@ main {
 
 }
 
-form {
+.form {
 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 
 }
 
@@ -172,9 +172,15 @@ form {
 
 /* RESULT */
 
+.vertical-line {
+
+    display: none;
+
+}
+
 .result {
 
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     gap: 1em;
