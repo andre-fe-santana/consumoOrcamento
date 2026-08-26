@@ -8,14 +8,15 @@ export function renderGraph(data, usedPercentageFinal) {
             series: data,
             chart: {
                 type: 'donut',
-                width: 400,
+                width: 350,
+                display: 'flex',
             },
             labels: [
                 'Consumido',
                 'Valor da Compra',
                 'Restante'
             ],
-            colors: ['#0EA5E9', '#F59E0B', '#14B8A6'],
+            colors: ['#8800F8', '#FF0C1F', '#05A6FF'],
             plotOptions: {
                 pie: {
                     // Round the corners of every slice (px)
@@ -50,11 +51,6 @@ export function renderGraph(data, usedPercentageFinal) {
             legend: {
                 position: 'bottom',
             },
-            // title: {
-            //     enabled: false,
-            //     text: 'Consumo de Orçamento',
-            //     align: 'center',
-            // },
             responsive: [
                 {
                     breakpoint: 480,
