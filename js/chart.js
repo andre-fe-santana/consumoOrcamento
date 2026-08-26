@@ -8,20 +8,21 @@ export function renderGraph(data, usedPercentageFinal) {
             series: data,
             chart: {
                 type: 'donut',
-                width: 400,
+                width: 350,
+                display: 'flex',
             },
             labels: [
                 'Consumido',
                 'Valor da Compra',
                 'Restante'
             ],
-            colors: ['#0EA5E9', '#F59E0B', '#14B8A6'],
+            colors: ['#8800F8', '#FF0C1F', '#05A6FF'],
             plotOptions: {
                 pie: {
                     // Round the corners of every slice (px)
                     borderRadius: 12,
                     // Leave a gap between adjacent slices (px)
-                    spacing: 5,
+                    spacing: 3,
                     donut: {
                         size: '60%',
                         labels: {
@@ -50,10 +51,6 @@ export function renderGraph(data, usedPercentageFinal) {
             legend: {
                 position: 'bottom',
             },
-            title: {
-                text: 'Consumo de Orçamento',
-                align: 'center',
-            },
             responsive: [
                 {
                     breakpoint: 480,
@@ -72,8 +69,21 @@ export function renderGraph(data, usedPercentageFinal) {
 
     }
 
+    let chartElement = document.querySelector("#chart")
+    let chart = new ApexCharts(document.querySelector('#chart'), options)
+    console.log(chartElement)
 
-    var chart = new ApexCharts(document.querySelector('#chart'), options)
-    chart.render()
+    if (chartElement == null) {
+
+        console.log("tava vazio")
+        chart.render()
+
+
+    } else {
+
+        chartElement.innerHTML = ''
+        chart.render() 
+    }
+
 
 }

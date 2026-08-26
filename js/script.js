@@ -16,6 +16,8 @@ let currencySelectInput = document.querySelector('#currencySelect')
 let purchaseCostInput = document.querySelector('#purchaseCost')
 
 // resposta
+let line = document.querySelector('.vertical-line')
+let result = document.querySelector('.result')
 let purchaseMotive = document.querySelector('#purchaseMotive')
 let btnCopy = document.querySelector('#btnCopy')
 let copyIcon = btnCopy.querySelector('.inputIcon')
@@ -46,13 +48,13 @@ export function getBudget(e) {
 
         let projectName = (projectNameInput.value).trim()
         let budgetType = projectType.value
-        let budgetTotal = Number(parseFloat(budgetTotalInput.value).toFixed(2))
-        let budgetLeft = Number(parseFloat(budgetLeftInput.value).toFixed(2))
+        let budgetTotal = Number(parseFloat((budgetTotalInput.value).replace('.', ',')).toFixed(2))
+        let budgetLeft = Number(parseFloat((budgetLeftInput.value).replace('.', ',')).toFixed(2))
         let currencySelect = currencySelectInput.value
-        let purchaseCost = Number(parseFloat(purchaseCostInput.value).toFixed(2))
+        let purchaseCost = Number(parseFloat((purchaseCostInput.value).replace('.', '')).toFixed(2))
 
         // teste de valores
-        console.log(`Nome do projeto: ${projectName} ${typeof (projectName)}| Tipo: ${budgetType} ${typeof (budgetType)}| Disponível: ${budgetTotal} ${typeof (budgetTotal)}| Restante: ${budgetLeft} ${typeof (budgetLeft)}| Moeda: ${currencySelect} ${typeof (currencySelect)}| Custo da Compra: ${purchaseCost} ${typeof (purchaseCost)}`)
+        console.log(`Nome do projeto: ${projectName} ${typeof (projectName)} | Tipo: ${budgetType} ${typeof (budgetType)} | Disponível: ${budgetTotal} ${typeof (budgetTotal)} | Restante: ${budgetLeft} ${typeof (budgetLeft)} | Moeda: ${currencySelect} ${typeof (currencySelect)} | Custo da Compra: ${purchaseCost} ${typeof (purchaseCost)}`)
 
         // verificacao de erro
         if (budgetTotal <= 0 || budgetLeft <= 0 || purchaseCost <= 0) {
@@ -60,7 +62,23 @@ export function getBudget(e) {
             errorDialog.style.display = "block";
             errorContent.textContent = 'Não utilize valores negativos nos campos'
 
-        } else {
+        }
+        
+        else if (purchaseCost > budgetLeft) {
+
+            errorDialog.style.display = "block";
+            errorContent.textContent = 'Valor da compra maior do que o valor disponível'
+
+        } 
+            
+        else if (budgetLeft > budgetTotal) {
+            
+            errorDialog.style.display = "block";
+            errorContent.textContent = 'Valor disponível maior do que o orçamento total'
+
+        }
+
+        else {
 
             errorDialog.style.display = "none";
 
@@ -89,11 +107,15 @@ export function getBudget(e) {
             let budgetUsed = budgetTotal - budgetLeft
             let budgetLeftFinal = budgetTotal - (budgetUsed + purchaseCost)
 
+
+            console.log(`Consumido: \n Antes: R$ ${budgetUsed} \n Depois: R$ ${budgetLeftFinal} (- R$${purchaseCost})`)
+
             // porcentagem
-            let usedPercentage = ((budgetUsed / budgetTotal)) * 100 // % ocupada no orçamento
-            let purcharsePercentage = ((purchaseCost/budgetTotal)) * 100 // % ocupada
-            let usedPercentageFinal = ((budgetUsed + purchaseCost) / budgetTotal) * 100
-            let leftPercentage = ((budgetLeftFinal)/100) * 100
+            let usedPercentage = Number((((budgetUsed / budgetTotal)) * 100).toFixed(2)) // % ocupada no orçamento
+            let purcharsePercentage = Number((((purchaseCost/budgetTotal)) * 100).toFixed(2)) // % ocupada
+            let usedPercentageFinal = Number((((budgetUsed + purchaseCost) / budgetTotal) * 100).toFixed(2))
+            let leftPercentage = Number((((budgetLeftFinal) / budgetTotal) * 100).toFixed(2))
+            
 
             console.log(`Consumido: ${usedPercentage}% | Compra: ${purcharsePercentage}% | Restante: ${leftPercentage}%`)
                 
@@ -105,6 +127,8 @@ export function getBudget(e) {
 
             graphData(data, usedPercentageFinal) //chama a função para exportar os dados
 
+            result.style.display = "flex"
+            line.style.display = "flex"
         }
 
 

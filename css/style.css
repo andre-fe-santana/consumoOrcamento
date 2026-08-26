@@ -13,7 +13,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 2em;
-    min-height: 100vh; 
+    min-height: 100dvh; 
     /* margin: 2em 0; */
     max-width: 100%;
 
@@ -45,11 +45,11 @@ main {
 
 }
 
-form {
+.form {
 
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 
 }
 
@@ -172,13 +172,18 @@ form {
 
 /* RESULT */
 
+.vertical-line {
+
+    display: none;
+
+}
+
 .result {
 
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
-    gap: 1em;
-
+    gap: 1.5em;
     width: 300px;
 
 }
@@ -187,7 +192,6 @@ form {
 
     display: flex;
     justify-content: center;
-
 }
 
 .resultText {
