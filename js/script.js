@@ -1,9 +1,12 @@
 import { graphData } from "./budget.js"
+import { getExchange } from "./exchange.js"
 
 // checagem de preenchimento de inputs
 const inputs = document.querySelectorAll('input')
 const formulario = document.querySelector('.form')
 const btnSubmit = document.querySelector('#btnSubmit')
+const exchangeDialog = document.querySelector('.exchangeDialog')
+const exchangeText = document.querySelector('.exchangeText')
 const errorDialog = document.querySelector('.errorDialog')
 const errorContent = document.querySelector('.errorMessage')
 
@@ -40,7 +43,32 @@ function unlockButton() {
 
 }
 
-export function getBudget(e) {
+async function setCurrency() {
+    
+    try {
+     
+        let currencySelect = currencySelectInput.value
+        let purchaseCost = Number(parseFloat((purchaseCostInput.value).replace('.', '')).toFixed(2))
+        console.log(`${currencySelect}`)
+        console.log(await getExchange(currencySelect))
+
+        console.log(`Original: ${purchaseCost} ${currencySelect}`)
+
+        purchaseCost *= (await getExchange(currencySelect)).toFixed(2)
+
+        console.log(`Convertido: ${purchaseCost} BRL`)
+
+        return purchaseCost
+
+    } catch (error) {
+
+        console.log(`ERRO: ${error}`)
+
+    }
+
+}
+
+export async function getBudget(e) {
 
     e.preventDefault()
 
@@ -50,11 +78,13 @@ export function getBudget(e) {
         let budgetType = projectType.value
         let budgetTotal = Number(parseFloat((budgetTotalInput.value).replace('.', ',')).toFixed(2))
         let budgetLeft = Number(parseFloat((budgetLeftInput.value).replace('.', ',')).toFixed(2))
-        let currencySelect = currencySelectInput.value
-        let purchaseCost = Number(parseFloat((purchaseCostInput.value).replace('.', '')).toFixed(2))
 
         // teste de valores
         console.log(`Nome do projeto: ${projectName} ${typeof (projectName)} | Tipo: ${budgetType} ${typeof (budgetType)} | Disponível: ${budgetTotal} ${typeof (budgetTotal)} | Restante: ${budgetLeft} ${typeof (budgetLeft)} | Moeda: ${currencySelect} ${typeof (currencySelect)} | Custo da Compra: ${purchaseCost} ${typeof (purchaseCost)}`)
+
+        let currencyValue = await getExchange(currencySelect)
+
+        purchaseCost *= currencyValue //converte o valor da compra conforme a moeda escolhida
 
         // verificacao de erro
         if (budgetTotal <= 0 || budgetLeft <= 0 || purchaseCost <= 0) {
@@ -81,27 +111,6 @@ export function getBudget(e) {
         else {
 
             errorDialog.style.display = "none";
-
-            let currencyValue
-        
-            switch (currencySelect) {
-                case "BRL":
-                    currencyValue = 1 
-                    break;
-                
-                case "USD":
-                    currencyValue = 5 
-                    break;
-                
-                case "EUR":
-                    currencyValue = 6.04
-            
-                default:
-                    currencySelect = 1
-                    break;
-            }
-
-            purchaseCost *= currencyValue //converte o valor da compra conforme a moeda escolhida
 
             // valores normais
             let budgetUsed = budgetTotal - budgetLeft
@@ -165,3 +174,4 @@ btnCopy.addEventListener('click', function copyText() {
 formulario.addEventListener('submit', getBudget)
 formulario.addEventListener('keydown', unlockButton)
 formulario.addEventListener('change', unlockButton)
+currencySelectInput.addEventListener('change', setCurrency)

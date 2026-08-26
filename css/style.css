@@ -157,6 +157,18 @@ main {
 
 } 
 
+.exchangeDialog {
+    display: flex;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+    .exchangeValue {
+        font-size: 0.8em;
+        color: var(--text);
+        font-style: italic;
+    }
+
 .errorDialog {
     display: none;
     margin-bottom: 0.5em;
