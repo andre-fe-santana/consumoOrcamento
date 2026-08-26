@@ -67,9 +67,16 @@ export function getBudget(e) {
         else if (purchaseCost > budgetLeft) {
 
             errorDialog.style.display = "block";
-            errorContent.textContent = 'Valor da compra maior do que o valor disponível '
+            errorContent.textContent = 'Valor da compra maior do que o valor disponível'
 
         } 
+            
+        else if (budgetLeft > budgetTotal) {
+            
+            errorDialog.style.display = "block";
+            errorContent.textContent = 'Valor disponível maior do que o orçamento total'
+
+        }
 
         else {
 

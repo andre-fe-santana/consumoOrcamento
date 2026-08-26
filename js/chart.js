@@ -22,7 +22,7 @@ export function renderGraph(data, usedPercentageFinal) {
                     // Round the corners of every slice (px)
                     borderRadius: 12,
                     // Leave a gap between adjacent slices (px)
-                    spacing: 5,
+                    spacing: 3,
                     donut: {
                         size: '60%',
                         labels: {
