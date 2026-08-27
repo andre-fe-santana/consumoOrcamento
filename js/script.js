@@ -186,7 +186,7 @@ btnCopy.addEventListener('click', function copyText() {
 )
 
 formulario.addEventListener('submit', getBudget)
-formulario.addEventListener('keydown', unlockButton)
+formulario.addEventListener('keyup', unlockButton)
 formulario.addEventListener('change', unlockButton)
 currencySelectInput.addEventListener('change', setCurrency) // Converte o valor inserido no campo de custo de compra e coloca o valor em BRL no span logo abaixo
 purchaseCostInput.addEventListener('keyup', setCurrency) //Atualiza o valor convertido toda vez que o usuário para de digitar no campo de custo da compra
