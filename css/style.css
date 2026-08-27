@@ -92,10 +92,31 @@ main {
 
     }
 
+    .input-group:has(.inputForm:focus) label {
+
+        outline: 1px solid rgb(0, 0, 0, 0.5);
+
+    }
+
+    select.inputForm:focus {
+
+        outline: 1px solid rgb(0, 0, 0, 0.5);
+
+    }
+
     .input-group input:focus, select:focus{
 
         outline: none;
 
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+
+        -webkit-text-fill-color: var(--text) !important;
     }
 
 .input-row {
@@ -156,6 +177,16 @@ main {
     padding: 0;
 
 } 
+
+.exchangeDialog {
+    display: none;
+}
+
+    .exchangeText {
+        font-size: 1em;
+        color: var(--text);
+        font-style: italic;
+    }
 
 .errorDialog {
     display: none;
@@ -277,7 +308,7 @@ footer img {
     body {
     
         display: flex;
-        margin: 4em 5%;
+        margin: 4em 0;
         max-width: 100%;
         align-content: center;
     
@@ -292,7 +323,7 @@ footer img {
     .content {
         
         flex-direction: column;
-        padding: 2em 1em;
+        padding: 2em 2em;
         width: 80%;
 
     }
@@ -324,10 +355,6 @@ footer img {
         grid-template-columns: 1fr;
         max-width: 100%;
         gap: 0;                    
-        
-        
-        
-        ;
 
     }
 
@@ -348,5 +375,24 @@ footer img {
         max-width: 100%;
 
     }
+
+        .input-group:has(.inputForm:focus) label {
+    
+            outline: none;
+            
+        }
+    
+        select.inputForm:focus {
+    
+            outline: none;
+
+        }
+    
+        .input-group input:focus,
+        select:focus {
+    
+            outline: none;
+    
+        }
 
 }

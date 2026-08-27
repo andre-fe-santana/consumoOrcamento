@@ -23,13 +23,13 @@
                         <span>Nome do Projeto</span>
                         <label for="projectName">
                             <img class="inputIcon" src="img/icons/project.svg" alt="Nome do Projeto">
-                            <input type="text" name="" id="projectName" placeholder="Máx: 120 caracteres" maxlength="120">
+                            <input type="text" class="inputForm" id="projectName" placeholder="Máx: 120 caracteres" maxlength="120">
                         </label>
                     </div>
 
                     <div class="input-group">
                         <span for="budgetType">Tipo</span>
-                        <select id="projectType">
+                        <select class="inputForm" id="projectType">
                             <option value="CAPEX" selected>CAPEX</option>
                             <option value="OPEX">OPEX</option>
                         </select>
@@ -40,7 +40,7 @@
                     <span>Qual é o orçamento do projeto?</span>
                     <label for="budgetTotal">
                         <img class="inputIcon" src="img/icons/budget.svg" alt="Orçamento do projeto">
-                        <input type="text" name="" id="budgetTotal" placeholder="Ex: 1.000.000" min="0">
+                        <input type="text" class="inputForm" id="budgetTotal" placeholder="Ex: 1.000.000" min="0">
                     </label>
                 </div>
 
@@ -48,22 +48,25 @@
                     <span>Quanto há disponível?</span>
                     <label for="budgetLeft">
                         <img class="inputIcon" src="img/icons/coin.svg" alt="Dinheiro restante no projeto">
-                        <input type="text" name="" id="budgetLeft" placeholder="Ex: 500.000,00" min="0">
+                        <input type="text" class="inputForm" id="budgetLeft" placeholder="Ex: 500.000,00" min="0">
                     </label>
                 </div>
 
                 <div class="input-group">
                     <span>Custo da Compra</span>
                     <label for="purchaseCost">
-                        <select id="currencySelect">
+                        <select id="currencySelect" class="inputForm">
                             <option value="BRL" selected>R$</option>
                             <option value="USD">$</option>
                             <option value="EUR">&euro;</option>
                         </select>
-                        <input type="text" name="" id="purchaseCost" placeholder="Ex: 10.000,00">
+                        <input type="text" id="purchaseCost" class="inputForm" placeholder="Ex: 10.000,00">
                     </label>
+                    <div class="exchangeDialog">
+                        <span class="exchangeText">a</span>
+                    </div>
                 </div>
-
+                
                 <div class="errorDialog">
                     <span class="errorMessage"></span>
                 </div>
@@ -109,6 +112,7 @@
 
     <script type="module" src="js/script.js"></script>
     <script type="module" src="js/chart.js" ></script>
+    <script type="module" src="js/exchange.js" ></script>
 
 </body>
 </html>
