@@ -355,10 +355,6 @@ footer img {
         grid-template-columns: 1fr;
         max-width: 100%;
         gap: 0;                    
-        
-        
-        
-        ;
 
     }
 
@@ -379,5 +375,24 @@ footer img {
         max-width: 100%;
 
     }
+
+        .input-group:has(.inputForm:focus) label {
+    
+            outline: none;
+            
+        }
+    
+        select.inputForm:focus {
+    
+            outline: none;
+
+        }
+    
+        .input-group input:focus,
+        select:focus {
+    
+            outline: none;
+    
+        }
 
 }
