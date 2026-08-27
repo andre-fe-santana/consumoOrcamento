@@ -308,7 +308,7 @@ footer img {
     body {
     
         display: flex;
-        margin: 4em 5%;
+        margin: 4em 0;
         max-width: 100%;
         align-content: center;
     
@@ -323,7 +323,7 @@ footer img {
     .content {
         
         flex-direction: column;
-        padding: 2em 1em;
+        padding: 2em 2em;
         width: 80%;
 
     }

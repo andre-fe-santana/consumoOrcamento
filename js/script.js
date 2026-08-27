@@ -51,8 +51,12 @@ async function setCurrency() {
 
         let purchaseCost = Number(parseFloat((purchaseCostInput.value).replaceAll('.', '').replace(',', '.')).toFixed(2)) // recebe uma string (1.156.123,01123123), remove os pontos e trasnforma as virgulas em pontos para criar casas decimais, no padrão americano
 
-        console.log(`${currencySelect}`)
+        if (isNaN(purchaseCost) === true) {
 
+            return
+
+        }
+        
         if (currencySelect == 'BRL') { // evita requisicoes desnecessarias na mesma moeda
             exchangeDialog.style.display = 'none'
             return { purchaseCost, currencySelect } 
