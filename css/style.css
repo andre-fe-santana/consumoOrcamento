@@ -158,13 +158,11 @@ main {
 } 
 
 .exchangeDialog {
-    display: flex;
-    margin-bottom: 0.5em;
-    text-align: center;
+    display: none;
 }
 
-    .exchangeValue {
-        font-size: 0.8em;
+    .exchangeText {
+        font-size: 1em;
         color: var(--text);
         font-style: italic;
     }

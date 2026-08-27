@@ -29,7 +29,7 @@ let btnText = btnCopy.querySelector('.btnText')
 function unlockButton() {
 
     const camposPreenchidos = Array.from(document.querySelectorAll('input')).every(inputs => inputs.value.trim() !== '')
-    console.log(camposPreenchidos)
+    // console.log(camposPreenchidos)
 
     if (camposPreenchidos === true) {
 
@@ -48,17 +48,31 @@ async function setCurrency() {
     try {
      
         let currencySelect = currencySelectInput.value
-        let purchaseCost = Number(parseFloat((purchaseCostInput.value).replace('.', '')).toFixed(2))
+
+        let purchaseCost = Number(parseFloat((purchaseCostInput.value).replaceAll('.', '').replace(',', '.')).toFixed(2)) // recebe uma string (1.156.123,01123123), remove os pontos e trasnforma as virgulas em pontos para criar casas decimais, no padrão americano
+
         console.log(`${currencySelect}`)
+
+        if (currencySelect == 'BRL') { // evita requisicoes desnecessarias na mesma moeda
+            exchangeDialog.style.display = 'none'
+            return { purchaseCost, currencySelect } 
+
+        }
+
         console.log(await getExchange(currencySelect))
 
         console.log(`Original: ${purchaseCost} ${currencySelect}`)
 
-        purchaseCost *= (await getExchange(currencySelect)).toFixed(2)
+        purchaseCost = purchaseCost * (await getExchange(currencySelect)).toFixed(2)
 
         console.log(`Convertido: ${purchaseCost} BRL`)
 
-        return purchaseCost
+        exchangeDialog.style.display = 'flex'
+        exchangeText.textContent = `R$${purchaseCost.toFixed(2)}`
+
+        console.log(`VALOR FINAL DA COMPRA: R$${purchaseCost}`)
+
+        return { purchaseCost, currencySelect } 
 
     } catch (error) {
 
@@ -78,13 +92,13 @@ export async function getBudget(e) {
         let budgetType = projectType.value
         let budgetTotal = Number(parseFloat((budgetTotalInput.value).replace('.', ',')).toFixed(2))
         let budgetLeft = Number(parseFloat((budgetLeftInput.value).replace('.', ',')).toFixed(2))
+        console.log(await setCurrency())
+        let { purchaseCost, currencySelect } = await setCurrency() //retorna o valor convertido
+        console.log(`Compra: ${purchaseCost} | Moeda: ${currencySelect}`)
+
 
         // teste de valores
         console.log(`Nome do projeto: ${projectName} ${typeof (projectName)} | Tipo: ${budgetType} ${typeof (budgetType)} | Disponível: ${budgetTotal} ${typeof (budgetTotal)} | Restante: ${budgetLeft} ${typeof (budgetLeft)} | Moeda: ${currencySelect} ${typeof (currencySelect)} | Custo da Compra: ${purchaseCost} ${typeof (purchaseCost)}`)
-
-        let currencyValue = await getExchange(currencySelect)
-
-        purchaseCost *= currencyValue //converte o valor da compra conforme a moeda escolhida
 
         // verificacao de erro
         if (budgetTotal <= 0 || budgetLeft <= 0 || purchaseCost <= 0) {
@@ -116,9 +130,6 @@ export async function getBudget(e) {
             let budgetUsed = budgetTotal - budgetLeft
             let budgetLeftFinal = budgetTotal - (budgetUsed + purchaseCost)
 
-
-            console.log(`Consumido: \n Antes: R$ ${budgetUsed} \n Depois: R$ ${budgetLeftFinal} (- R$${purchaseCost})`)
-
             // porcentagem
             let usedPercentage = Number((((budgetUsed / budgetTotal)) * 100).toFixed(2)) // % ocupada no orçamento
             let purcharsePercentage = Number((((purchaseCost/budgetTotal)) * 100).toFixed(2)) // % ocupada
@@ -130,8 +141,6 @@ export async function getBudget(e) {
                 
             let data = [ usedPercentage, purcharsePercentage, leftPercentage ]
             
-            // console.log(data)
-
             purchaseMotive.textContent = `Com essa compra consumiremos ${usedPercentageFinal}% do projeto ${projectName} em ${budgetType}`
 
             graphData(data, usedPercentageFinal) //chama a função para exportar os dados
@@ -162,6 +171,11 @@ btnCopy.addEventListener('click', function copyText() {
         copyIcon.src = 'img/icons/check.svg'
         btnText.textContent = "COPIADO"
 
+        setTimeout(() => {
+            copyIcon.src = 'img/icons/copy.svg'
+            btnText.textContent = "COPIAR TEXTO"
+        }, 5000) // 5 segundos
+        
     } catch (err) {
 
         console.log(`Erro ao copiar texto: ${err}`)
@@ -174,4 +188,5 @@ btnCopy.addEventListener('click', function copyText() {
 formulario.addEventListener('submit', getBudget)
 formulario.addEventListener('keydown', unlockButton)
 formulario.addEventListener('change', unlockButton)
-currencySelectInput.addEventListener('change', setCurrency)
+currencySelectInput.addEventListener('change', setCurrency) // Converte o valor inserido no campo de custo de compra e coloca o valor em BRL no span logo abaixo
+purchaseCostInput.addEventListener('keyup', setCurrency) //Atualiza o valor convertido toda vez que o usuário para de digitar no campo de custo da compra
